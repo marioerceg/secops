@@ -16,7 +16,7 @@ pipeline {
                 remote.identityFile = identity
                 stage("Placeholder Stage...") {
                   sshCommand remote: remote, sudo: false, command: 'cd /root/secops/ansible && git pull origin'
-                  sshCommand remote: remote, sudo: false, command: 'cd /root/secops/ansible && ansible-playbook compliance.yaml'
+                  sshCommand remote: remote, sudo: false, command: 'cd /root/secops/ansible && ansible-playbook compliance.yaml '
               }
                 stage("Scan with InSpec") {
                   sshCommand remote: remote, sudo: false, command: 'inspec exec --no-distinct-exit /root/linux-baseline/'
